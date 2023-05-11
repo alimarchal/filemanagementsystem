@@ -22,7 +22,7 @@ class FmsController extends Controller
                 AllowedFilter::exact('type')
             ])
             ->orderByDesc('created_at') // Order the results by 'created_at' in descending order
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
 

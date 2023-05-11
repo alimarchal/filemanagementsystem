@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=53871&format=png" alt="employees on leave" class="h-12 w-12">
+                                <img src="{{config('app.url')}}/snet.png" alt="employees on leave" class="h-12 w-48">
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=47051&format=png" alt="employees on leave" class="h-12 w-12">
+                                <img src="{{config('app.url')}}/fiber.png" alt="employees on leave" class="h-12 w-48">
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                 var options_bar = {
                     series: [{
                         name: "",
-                        data: [6, 3, 1, 1]
+                        data: [@foreach($weeks as $key => $value) {{$value}}, @endforeach]
                     }],
                     chart: {
                         type: 'bar',
