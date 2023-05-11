@@ -5,5 +5,5 @@
 {{--    </svg>--}}
 {{--</a>--}}
 <a href="/">
-    <img class="w-auto h-auto" viewbox="0 0 48 48" src="{{config('app.url') . '/SCO-Logo.png'}}">
+    <img class="w-auto h-auto" viewbox="0 0 48 48" src="{{config('app.url') . '/snet.png'}}">
 </a>
