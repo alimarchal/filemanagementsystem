@@ -4,9 +4,12 @@
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     @endpush
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight inline-block">
             {{ __('Dashboard') }}
         </h2>
+        <h1 class="text-center text-2xl font-extrabold">
+            AOTR MZD
+        </h1>
     </x-slot>
 
     <div class="py-12">
@@ -24,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=edfZvVT6w125&format=png" alt="employees on leave" class="h-12 w-12">
+                                <img src="https://img.icons8.com/?size=128&id=edfZvVT6w125&format=png" alt="employees on leave" >
                             </div>
                         </div>
                     </div>
@@ -39,12 +42,11 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=42918&format=png" alt="employees on leave" class="h-12 w-12">
+                                <img src="https://img.icons8.com/?size=128&id=42918&format=png" alt="employees on leave">
                             </div>
                         </div>
                     </div>
                 </a>
-
                 <a href="{{route('fms.index',['filter[type]'=> 'sphone_snet_br'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y" style="background-color: #E8F5E9;">
                     <div class="p-5">
                         <div class="grid grid-cols-3 gap-1">
@@ -57,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="{{config('app.url')}}/snet.png" alt="employees on leave" class="h-12 w-48">
+                                <img src="{{config('app.url')}}/snet.png" alt="employees on leave" style="height: 79px;">
                             </div>
                         </div>
                     </div>
@@ -65,7 +67,7 @@
                 <a href="{{route('fms.index',['filter[type]'=> 'sfiber_br'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y" style="background-color: #FFFDE7;">
                     <div class="p-5">
                         <div class="grid grid-cols-3 gap-1">
-                            <div class="col-span-2">
+                            <div class="col-span-1">
                                 <div class="text-3xl font-bold leading-8">
                                     {{\App\Models\Fms::where('type','sfiber_br')->count()}}
                                 </div>
@@ -73,14 +75,12 @@
                                     SFIBER Br
                                 </div>
                             </div>
-                            <div class="col-span-1 flex items-center justify-end">
-                                <img src="{{config('app.url')}}/fiber.png" alt="employees on leave" class="h-12 w-48">
+                            <div class="col-span-2 flex items-center justify-end">
+                                <img src="{{config('app.url')}}/fiber.png" alt="employees on leave" style="height: 79px;">
                             </div>
                         </div>
                     </div>
                 </a>
-
-
                 <a href="{{route('fms.index',['filter[type]'=> 'revenue_br'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" style="background-color: #FBE9E7;">
                     <div class="p-5">
                         <div class="grid grid-cols-3 gap-1">
@@ -93,13 +93,11 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=uMqpHOMmc9di&format=png" alt="revenue br" class="h-12 w-12">
+                                <img src="https://img.icons8.com/?size=128&id=uMqpHOMmc9di&format=png" alt="revenue br">
                             </div>
                         </div>
                     </div>
                 </a>
-
-
                 <a href="{{route('fms.index',['filter[type]'=> 'recovery_br'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y" style="background-color: #F9FBE7;">
                     <div class="p-5">
                         <div class="grid grid-cols-3 gap-1">
@@ -112,17 +110,50 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex items-center justify-end">
-                                <img src="https://img.icons8.com/?size=128&id=Fj1kL6hV4KOk&format=png" alt="employees on leave" class="h-12 w-12">
+                                <img src="https://img.icons8.com/?size=128&id=Fj1kL6hV4KOk&format=png" alt="employees on leave" >
                             </div>
                         </div>
                     </div>
                 </a>
-
+                <a href="{{route('fms.index',['filter[type]'=> 'disc_rest'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y" style="background-color: lightblue;">
+                    <div class="p-5">
+                        <div class="grid grid-cols-3 gap-1">
+                            <div class="col-span-2">
+                                <div class="text-3xl font-bold leading-8">
+                                    {{\App\Models\Fms::where('type','disc_rest')->count()}}
+                                </div>
+                                <div class="mt-1 text-base  font-bold text-gray-600">
+                                    DISC & REST
+                                </div>
+                            </div>
+                            <div class="col-span-1 flex items-center justify-end">
+                                <img src="https://img.icons8.com/?size=128&id=wRWcFHf3CbWQ&format=png" alt="employees on leave" >
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{route('fms.index',['filter[type]'=> 'ait_certificate'])}}" class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y" style="background-color: lightgreen;">
+                    <div class="p-5">
+                        <div class="grid grid-cols-3 gap-1">
+                            <div class="col-span-2">
+                                <div class="text-3xl font-bold leading-8">
+                                    {{\App\Models\Fms::where('type','ait_certificate')->count()}}
+                                </div>
+                                <div class="mt-1 text-base  font-bold text-gray-600">
+                                    AIT CERTIFICATE
+                                </div>
+                            </div>
+                            <div class="col-span-1 flex items-center justify-end">
+                                <img src="https://img.icons8.com/?size=128&id=46470&format=png" alt="employees on leave" >
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <div class="grid grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-4 mt-4" id="chart_bar"  ></div>
-                <div class="bg-white rounded-lg shadow-lg p-4 mt-4" id="chart" ></div>
+                <div class="bg-white rounded-lg shadow-lg p-4 mt-4" id="chart_bar"  style="background-color: #e1f5fe;" ></div>
+                <div class="bg-white rounded-lg shadow-lg p-4 mt-4" id="chart" style="background-color: #fbe9e6; "></div>
             </div>
 
 
@@ -137,7 +168,8 @@
                     }],
                     chart: {
                         type: 'bar',
-                        height: 350
+                        height: 350,
+                        background: '#e1f5fe'
                     },
                     title: {
                         text: 'Digitization By Category',
@@ -155,24 +187,24 @@
                     xaxis: {
                         categories: ['SPHONE/SNET Br', 'SFIBER Br', 'REVENUE Br', 'RECOVERY Br']
                     },
-                    colors: [
-                        function ({ value, seriesIndex, dataPointIndex }) {
-                            // Generate a random color for each bar
-                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                        },
-                        function ({ value, seriesIndex, dataPointIndex }) {
-                            // Generate a random color for each bar
-                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                        },
-                        function ({ value, seriesIndex, dataPointIndex }) {
-                            // Generate a random color for each bar
-                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                        },
-                        function ({ value, seriesIndex, dataPointIndex }) {
-                            // Generate a random color for each bar
-                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                        }
-                    ]
+                    // colors: [
+                    //     function ({ value, seriesIndex, dataPointIndex }) {
+                    //         // Generate a random color for each bar
+                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                    //     },
+                    //     function ({ value, seriesIndex, dataPointIndex }) {
+                    //         // Generate a random color for each bar
+                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                    //     },
+                    //     function ({ value, seriesIndex, dataPointIndex }) {
+                    //         // Generate a random color for each bar
+                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                    //     },
+                    //     function ({ value, seriesIndex, dataPointIndex }) {
+                    //         // Generate a random color for each bar
+                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                    //     }
+                    // ]
                 };
 
                 var chart_bar = new ApexCharts(document.querySelector("#chart_bar"), options_bar);
@@ -186,6 +218,7 @@
                     chart: {
                         height: 350,
                         type: 'line',
+                        background: '#fbe9e6',
                         zoom: {
                             enabled: false
                         }

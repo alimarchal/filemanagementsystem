@@ -6,6 +6,10 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('File Management') }}
         </h2>
+
+        <h1 class="text-center text-2xl font-extrabold">
+            AOTR MZD
+        </h1>
     </x-slot>
 
     <div class="py-12">
@@ -39,7 +43,6 @@
                             </form>
                         </div>
                     @endforeach
-
                 </div>
 
 
@@ -53,12 +56,6 @@
                     @csrf
                     @method('PUT')
                     <x-validation-errors class="mb-4" />
-                    {{-- Name/Description fields, irrelevant for this article --}}
-{{--                    <div class="mt-4 w-full">--}}
-{{--                        <label for="telephone" class="block text-gray-700 font-bold">Telephone Number</label>--}}
-{{--                        <input type="tel" value="{{$fms->telephone}}" maxlength="11" min="11" id="telephone" name="telephone" pattern="[0-9]{11,}" required onkeypress="return isNumeric(event)" class="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full">--}}
-{{--                    </div>--}}
-
                     <script>
                         function isNumeric(event) {
                             // Get the ASCII code of the key that was pressed

@@ -18,6 +18,9 @@
             </div>
         </h2>
 
+        <h1 class="text-center text-2xl font-extrabold">
+            AOTR MZD
+        </h1>
 
     </x-slot>
     <div class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8" style="display: none;" id="filters">
@@ -38,6 +41,8 @@
                             <option value="sfiber_br">SFIBER Br</option>
                             <option value="revenue_br">REVENUE Br</option>
                             <option value="recovery_br">RECOVERY Br</option>
+                            <option value="disc_rest">DISC & REST</option>
+                            <option value="ait_certificate">AIT Certificate</option>
                         </select>
 
                     <div class="col-span-2">

@@ -41,12 +41,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
                 }
             }
             $weeks[$week_number] = $week_count;
-        }
 
+        }
         return view('dashboard', compact('weeks'));
     })->name('dashboard');
     Route::get('/fms', [\App\Http\Controllers\FmsController::class, 'index'])->name('fms.index');
     Route::get('/fms/{fms}', [\App\Http\Controllers\FmsController::class, 'show'])->name('fms.show');
+
     Route::get('projects', [ProjectsController::class, 'index'])->name('projects.index');
     Route::post('projects/media', [ProjectsController::class, 'storeMedia'])->name('projects.storeMedia');
     Route::post('projects', [ProjectsController::class, 'store'])->name('projects.store');

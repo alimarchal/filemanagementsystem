@@ -6,6 +6,10 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>
+
+        <h1 class="text-center text-2xl font-extrabold">
+            AOTR MZD
+        </h1>
     </x-slot>
 
     <div class="py-12">
@@ -27,6 +31,8 @@
                                 <option value="sfiber_br">SFIBER Br</option>
                                 <option value="revenue_br">REVENUE Br</option>
                                 <option value="recovery_br">RECOVERY Br</option>
+                                <option value="disc_rest">DISC & REST</option>
+                                <option value="ait_certificate">AIT Certificate</option>
                             </select>
                         </div>
 

@@ -35,7 +35,6 @@ class ProjectsController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'type' => 'required', // validates that each document file is present and valid
             'document' => 'required', // validates that each document file is present and valid
@@ -60,7 +59,7 @@ class ProjectsController extends Controller
             $fms->addMedia(storage_path('app/public/tmp/' . $file))->toMediaCollection('document');
         }
         session()->flash('status', 'Files has been successfully added into FMS.');
-        return to_route('fms.show',$fms->id);
+        return to_route('fms.show', $fms->id);
 
     }
 
@@ -78,7 +77,5 @@ class ProjectsController extends Controller
             session()->flash('status', 'Files has been successfully deleted.');
             return to_route('fms.show', $fms);
         }
-
-
     }
 }

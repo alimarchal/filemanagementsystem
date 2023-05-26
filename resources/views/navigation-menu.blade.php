@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
 {{--                        <x-application-mark class="block h-9 w-auto" />--}}
-                        <img src="http://118.107.143.114/SCO-Logo.ico" class="block h-9 w-auto" alt="Logo">
+                        <img src="{{ config('app.url') . '/logo.png' }}" class="block h-9 w-auto" alt="Logo">
                     </a>
                 </div>
 

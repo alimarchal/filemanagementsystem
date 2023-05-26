@@ -2,6 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
+            <h1 class="text-2xl my-1 font-extrabold">DIGITAL FILE MANAGEMENT SYSTEM (DFMS)</h1>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
