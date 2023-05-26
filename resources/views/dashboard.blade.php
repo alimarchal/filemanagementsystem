@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="col-span-2 flex items-center justify-end">
-                                <img src="{{config('app.url')}}/fiber.png" alt="employees on leave" style="height: 79px;">
+                                <img src="{{config('app.url')}}/fiber.png" alt="employees on leave" style="height: 79px; width: 100px;">
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                 var options_bar = {
                     series: [{
                         name: "",
-                        data: [@foreach($weeks as $key => $value) {{$value}}, @endforeach]
+                        data: [@foreach($categorys as $key => $value) {{$value}}, @endforeach]
                     }],
                     chart: {
                         type: 'bar',
@@ -187,24 +187,24 @@
                     xaxis: {
                         categories: ['SPHONE/SNET Br', 'SFIBER Br', 'REVENUE Br', 'RECOVERY Br']
                     },
-                    // colors: [
-                    //     function ({ value, seriesIndex, dataPointIndex }) {
-                    //         // Generate a random color for each bar
-                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                    //     },
-                    //     function ({ value, seriesIndex, dataPointIndex }) {
-                    //         // Generate a random color for each bar
-                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                    //     },
-                    //     function ({ value, seriesIndex, dataPointIndex }) {
-                    //         // Generate a random color for each bar
-                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                    //     },
-                    //     function ({ value, seriesIndex, dataPointIndex }) {
-                    //         // Generate a random color for each bar
-                    //         return '#' + Math.floor(Math.random() * 16777215).toString(16);
-                    //     }
-                    // ]
+                    colors: [
+                        function ({ value, seriesIndex, dataPointIndex }) {
+                            // Generate a random color for each bar
+                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                        },
+                        function ({ value, seriesIndex, dataPointIndex }) {
+                            // Generate a random color for each bar
+                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                        },
+                        function ({ value, seriesIndex, dataPointIndex }) {
+                            // Generate a random color for each bar
+                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                        },
+                        function ({ value, seriesIndex, dataPointIndex }) {
+                            // Generate a random color for each bar
+                            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                        }
+                    ]
                 };
 
                 var chart_bar = new ApexCharts(document.querySelector("#chart_bar"), options_bar);

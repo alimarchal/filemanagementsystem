@@ -31,6 +31,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             ->get();
 
         $weeks = [];
+        $categorys = [
+            'sphone' => \App\Models\Fms::where('type', 'sphone_snet_br')->count(),
+            'sfiber' => \App\Models\Fms::where('type', 'sfiber_br')->count(),
+            'rev' => \App\Models\Fms::where('type', 'revenue_br')->count(),
+            'rcv' => \App\Models\Fms::where('type', 'recovery_br')->count(),
+        ];
         for ($i = 3; $i >= 0; $i--) {
             $week_number = date("W", strtotime("-$i week"));
             $week_count = 0;
@@ -43,7 +49,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             $weeks[$week_number] = $week_count;
 
         }
-        return view('dashboard', compact('weeks'));
+        return view('dashboard', compact('weeks','categorys'));
     })->name('dashboard');
     Route::get('/fms', [\App\Http\Controllers\FmsController::class, 'index'])->name('fms.index');
     Route::get('/fms/{fms}', [\App\Http\Controllers\FmsController::class, 'show'])->name('fms.show');
