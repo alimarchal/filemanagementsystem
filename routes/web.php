@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FileManagementSystemController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -59,4 +60,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('projects', [ProjectsController::class, 'store'])->name('projects.store');
     Route::delete('projects/{media}/{fms}', [ProjectsController::class, 'destroy'])->name('projects.destroy');
     Route::put('projects/{fms}/update', [ProjectsController::class, 'update'])->name('projects.update');
+
+    Route::resource('roles',\App\Http\Controllers\RoleController::class);
+    Route::resource('permissions',\App\Http\Controllers\PermissionController::class);
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
 });

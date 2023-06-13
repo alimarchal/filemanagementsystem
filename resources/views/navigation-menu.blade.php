@@ -24,6 +24,18 @@
                     <x-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.*')">
                         {{ __('New Account Files') }}
                     </x-nav-link>
+
+
+                    @role('admin')
+                    <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.*')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+
+
+                    <x-nav-link href="{{ route('permissions.index') }}" :active="request()->routeIs('permissions.*')">
+                        {{ __('Permissions') }}
+                    </x-nav-link>
+                    @endrole
                 </div>
             </div>
 

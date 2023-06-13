@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('head-scripts')
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet"/>
     @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -33,14 +33,15 @@
                             <a href="{{$collection->getUrl()}}" target="_blank">
                                 <img class="h-auto max-w-full rounded-lg border-2 border-gray-200" src="{{$collection->getUrl('preview')}}" alt="">
                             </a>
-
-                            <form action="{{route('projects.destroy',[ $collection->id, $fms->id])}}" method="post" class="mt-4">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" onclick="if(confirm('Are you sure you want to delete this item?')){return true;}else{return false;}" >
-                                    Delete
-                                </button>
-                            </form>
+                            @can('delete')
+                                <form action="{{route('projects.destroy',[ $collection->id, $fms->id])}}" method="post" class="mt-4">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" onclick="if(confirm('Are you sure you want to delete this item?')){return true;}else{return false;}">
+                                        Delete
+                                    </button>
+                                </form>
+                            @endcan
                         </div>
                     @endforeach
                 </div>
@@ -55,7 +56,7 @@
                 <form action="{{ route("projects.update", $fms->id) }}" method="POST" enctype="multipart/form-data" class="w-full mx-auto">
                     @csrf
                     @method('PUT')
-                    <x-validation-errors class="mb-4" />
+                    <x-validation-errors class="mb-4"/>
                     <script>
                         function isNumeric(event) {
                             // Get the ASCII code of the key that was pressed
@@ -68,7 +69,6 @@
                             return true;
                         }
                     </script>
-
 
 
                     <div class="mt-4">
@@ -86,53 +86,58 @@
         </div>
     </div>
 
-        @push('modals')
-            {{-- JS assets at the bottom --}}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-            {{-- ...Some more scripts... --}}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-            <script>
+    @push('modals')
+        {{-- JS assets at the bottom --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+        {{-- ...Some more scripts... --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+        <script>
 
 
-                var uploadedDocumentMap = {}
-                Dropzone.options.documentDropzone = {
-                    url: '{{ route('projects.storeMedia') }}',
-                    maxFilesize: 5, // MB
-                    addRemoveLinks: true,
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    success: function (file, response) {
-                        $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
-                        uploadedDocumentMap[file.name] = response.name
-                    },
-                    removedfile: function (file) {
-                        file.previewElement.remove()
-                        var name = ''
-                        if (typeof file.file_name !== 'undefined') {
-                            name = file.file_name
-                        } else {
-                            name = uploadedDocumentMap[file.name]
-                        }
-                        $('form').find('input[name="document[]"][value="' + name + '"]').remove()
-                    },
-                    init: function () {
-
-                        @if(isset($project) && $project->document)
-                        var files =
-                            {!! json_encode($project->document) !!}
-                            for (var i in files) {
-                            var file = files[i]
-                            this.options.addedfile.call(this, file)
-                            file.previewElement.classList.add('dz-complete')
-                            $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
-                        }
-                        @endif
-
+            var uploadedDocumentMap = {}
+            Dropzone.options.documentDropzone = {
+                url: '{{ route('projects.storeMedia') }}',
+                maxFilesize: 5, // MB
+                addRemoveLinks: true,
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function (file, response) {
+                    $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                    uploadedDocumentMap[file.name] = response.name
+                },
+                removedfile: function (file) {
+                    file.previewElement.remove()
+                    var name = ''
+                    if (typeof file.file_name !== 'undefined') {
+                        name = file.file_name
+                    } else {
+                        name = uploadedDocumentMap[file.name]
                     }
+                    $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+                },
+                init: function () {
+
+                    @if(isset($project) && $project->document)
+                    var files =
+                        {!! json_encode($project->document) !!}
+                        for(
+                    var i
+                in
+                    files
+                )
+                    {
+                        var file = files[i]
+                        this.options.addedfile.call(this, file)
+                        file.previewElement.classList.add('dz-complete')
+                        $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+                    }
+                    @endif
+
                 }
-            </script>
-        @endpush
+            }
+        </script>
+    @endpush
 
 </x-app-layout>
